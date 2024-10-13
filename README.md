@@ -2,6 +2,67 @@
 
 Finch is a minimalistic distributed in-memory key-value store written in C++.
 
+## Installation & Running
+
+First, clone the Finch repository:
+```
+git clone https://github.com/ramizdundar/finch.git
+```
+
+Navigate to the project folder and compile:
+```
+cd finch
+mkdir -p build
+cd build
+cmake ..
+make
+```
+
+You can now run as many servers as you'd like:
+```
+./server
+```
+
+Copy `node_list.txt` into the `build/` directory (next to the client binary). By
+default, `node_list.txt` contains three localhost addresses, assuming they’re
+available. This file should ideally list the addresses of the servers you’re
+running:
+```
+cp ../node_list.txt .
+```
+
+Finally, start the client:
+```
+./client
+```
+
+At this point, you can explore the main functionality of the client, integrate
+your own code, or check out the tests.
+
+## Testing
+
+Although testing wasn't a requirement, ensuring a working implementation was.
+Therefore, Finch includes a minimal benchmarking and stress testing utility to
+verify its functionality. If you've followed the installation steps, no
+additional setup is required.
+
+To run the test:
+```
+./test
+```
+
+By default, the test creates 10 threads, each performing 100,000 random
+operations, for a total of 1 million operations. The operations are split as
+follows: 40% get, 40% put, and 20% del. It verifies the correctness of the
+operations using a local map. At the end of the test, it cleans up any remaining
+entries and checks their values for accuracy.
+
+- Key length: Uniformly distributed between 5 and 15 characters
+- Value length: Uniformly distributed between 5 and 50 characters
+
+All of these parameters are configurable in `test.cpp` but require recompiling
+the project after changes.
+
 ## Design Overview
 
 Finch consists of two components: the client and the server. Multiple servers
@@ -183,10 +244,10 @@ decided not to include it.
 **Q: Why no consistent hashing?**
 
 > Consistent hashing isn’t necessary because we’re not planning to scale up or
-down, either intentionally or due to failure. Without these scenarios, the
-added complexity of consistent hashing isn’t justified.
+down, either intentionally or due to failure. Without these scenarios, the added
+complexity of consistent hashing isn’t justified.
 
-**Q: Have you considered other designs**
+**Q: Have you considered other designs?**
 
 > Initially, I thought about introducing fault tolerance by using a multicast
 setup without a master-slave architecture to avoid complexity of master
