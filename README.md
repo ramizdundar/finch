@@ -167,9 +167,9 @@ After reviewing the requirements, a few key points stood out:
 
 I quickly ruled out some features:
 
-1. Encryption
-1. Authentication
-1. Serialization (I assumed keys and values are sequences of bytes).
+- Encryption
+- Authentication
+- Serialization (I assumed keys and values are sequences of bytes).
 
 After further consideration, I also discarded the following, as they don’t fit
 within a 2-hour implementation window and don’t align with the “simplest”
@@ -283,13 +283,13 @@ solution overly complex, so I decided against it.
 separate thread, with communication between client-handling server threads
 through SPSC queues. However, I reconsidered this design because I wasn't sure
 if the locking overhead would outweigh the cost of frequent context switching in
-this approach. Single-threaded server:
+this approach.
 
 > I briefly considered a single-threaded design using poll() for I/O management.
 While it’s simple, I ultimately chose the current implementation because it
-scales better with multiple servers. If I were to go the single-threaded route,
-I would prefer an epoll/io_uring thread-per-core, shared-nothing architecture,
-similar to systems like DragonflyDB, Redpanda, and ScyllaDB.
+scales better with equal amount of servers. If I were to go the single-threaded
+route, I would prefer an epoll/io_uring thread-per-core, shared-nothing
+architecture, similar to systems like DragonflyDB, Redpanda, and ScyllaDB.
 
 ## LLM Usage
 
@@ -412,13 +412,13 @@ Based on my experience, I primarily benefit from LLMs in three ways:
    code.
 1. Enhanced Research: I find myself relying less on Google and more on LLMs for
    targeted queries or guidance. I frequently ask ChatGPT directly or use Google
-   to search specific websites. For example, understanding that POSIX
+   only to search specific websites. For example, understanding that POSIX
    asynchronous file I/O is implemented using a thread pool in the
    kernel—meaning it’s not truly asynchronous
    ([source](https://lwn.net/Articles/671797/))—would have been much more
    challenging without ChatGPT’s assistance. While there is always a risk of
-   hallucination, the balance between informed guesses and increased
-   productivity makes occasional fact-checking worthwhile.
+   hallucination, increased productivity makes occasional fact-checking
+   worthwhile.
 
 Another benefit is using LLMs to understand code, especially when it requires
 domain expertise (such as bizzare bitwise operations, rare design patterns,
