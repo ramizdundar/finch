@@ -2,7 +2,7 @@
   <img src="https://github.com/user-attachments/assets/af68bcb8-369e-430c-8ffb-b7755005d70d" />
 </p>
 
-`Finch` is a minimalistic distributed in-memory key-value store written in C++.
+**Finch** is a minimalistic distributed in-memory key-value store written in C++.
 
 # Table of Contents
 - [Installation & Running](#installation--running)
