@@ -376,3 +376,51 @@ can you generate a ascii diagram for view?
 
 can you generate me an ascii art of finch?
 ```
+
+### LLM Usage in Production
+
+In production, I anticipate that the use of LLMs will be similar to how I've
+utilized them in this project, with code generation being more focused on
+refinement rather than initial creation.
+
+Based on my experience, I primarily benefit from LLMs in three ways:
+
+1. Polishing Writing: Whether it's comments, Slack messages, or issue
+   descriptions, LLMs excel at refining text. I typically draft the initial
+   version myself and then ask the LLM to polish it. This allows me to
+   selectively incorporate changes or further tweak the LLM’s suggestions.
+1. Code Generation and/or Refinement: The most challenging aspect of coding is
+   the design process, not the actual writing. Once I have a clear idea, I use
+   LLMs to generate code function by function, which simplifies the review
+   process. Or, I more often use LLMs to generate comments or polish existing
+   code.
+1. Enhanced Research: I find myself relying less on Google and more on LLMs for
+   targeted queries or guidance. I frequently ask ChatGPT directly or use Google
+   to search specific websites. For example, understanding that POSIX
+   asynchronous file I/O is implemented using a thread pool in the
+   kernel—meaning it’s not truly asynchronous
+   ([source](https://lwn.net/Articles/671797/))—would have been much more
+   challenging without ChatGPT’s assistance. While there is always a risk of
+   hallucination, the balance between informed guesses and increased
+   productivity makes occasional fact-checking worthwhile.
+
+Another benefit is using LLMs to understand code, especially when it requires
+domain expertise (such as bizzare bitwise operations, rare design patterns,
+etc.), involves poorly written code (like functions passed as arguments deep in
+the call stack without static typing), or when trying to comprehend error
+messages (especially in C++). I believe this advantage will become increasingly
+important as LLMs become more affordable and can handle larger datasets more
+easily, such as processing entire repository folders as input.
+
+Cons and Considerations When Using LLMs:
+
+1. Uniform Writing Style: While I don’t mind ChatGPT's writing style, it tends
+   to generate very similar responses to similar queries, and conversational
+   history usually isn't very influential. For instance, if you polish a
+   paragraph, fix two sentences, and then provide the revised paragraph with new
+   sentences for further polishing, ChatGPT may revert to the original version
+   instead of focusing on the newly added sentences.
+1. Need for Specificity: If your requests aren't very specific, the generated
+   content can often be disappointing. Consequently, it's often faster to write
+   your own content and then use LLMs for polishing rather than repeatedly
+   generating content from the LLM that requires revision.
