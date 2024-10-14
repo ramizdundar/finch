@@ -3,11 +3,13 @@
 Finch is a minimalistic distributed in-memory key-value store written in C++.
 
 # Table of Contents
-1. [Installation & Running](#installation--running)
-1. [Testing](#testing)
-1. [Design Overview](#design-overview)
-1. [Design Choices](#design-choices)
-1. [LLM Usage](#llm-usage)
+- [Installation & Running](#installation--running)
+- [Testing](#testing)
+- [Design Overview](#design-overview)
+    - [Example Dataflow](#example-dataflow)
+- [Design Choices](#design-choices)
+- [LLM Usage](#llm-usage)
+    - [LLM Usage in Production](#llm-usage-in-production)
 
 ## Installation & Running
 
