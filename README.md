@@ -108,9 +108,9 @@ Message Structure:
 +-------------------+
 | Key (K)           | (L bytes)
 +-------------------+
-| Value Length (VL) | (4 bytes, uint32_t) [Only for SET operation]
+| Value Length (VL) | (4 bytes, uint32_t) [Only for put operation]
 +-------------------+
-| Value (V)         | (VL bytes) [Only for SET operation]
+| Value (V)         | (VL bytes) [Only for put operation]
 +-------------------+
 ```
 
@@ -126,7 +126,7 @@ applies to each server instance, meaning that if there are 3 servers, the system
 will have 3072 partitions in total.
 
 When a client sends a request to a server, the corresponding partition is locked
-while the operation (GET, PUT, or DELETE) is performed. This ensures consistency
+while the operation (get, put, or del) is performed. This ensures consistency
 while maintaining high performance across multiple partitions and servers.
 
 ### Example Dataflow
