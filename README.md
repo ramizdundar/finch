@@ -81,7 +81,7 @@ newline-separated list of server addresses. This file must reside in the same
 directory as the client binary.
 
 When a client is initialized, it attempts to connect to all the servers listed
-in node_list.txt and keeps these connections alive. This design ensures that
+in `node_list.txt` and keeps these connections alive. This design ensures that
 requests can be sent to the correct server with minimal latency. The server
 responsible for handling a particular request is determined by taking the modulo
 of the key's hash value with the number of available servers.
@@ -131,7 +131,7 @@ while maintaining high performance across multiple partitions and servers.
 
 Let’s walk through the following code snippet to understand how Finch works.
 Before running this code, we assume that the servers are already up and running,
-and node_list.txt contains the correct server addresses:
+and `node_list.txt` contains the correct server addresses:
 
 ```
 FinchClient client;
@@ -140,8 +140,8 @@ if (client.put("mykey", "myvalue")) {
 }
 ```
 
-1. When the FinchClient is created, the node_list.txt file is parsed, and the
-   client establishes connections to all listed servers.
+1. When the `FinchClient` is created, the `node_list.txt` file is parsed, and
+   the client establishes connections to all listed servers.
 1. Each server creates a dedicated thread to handle the connection from the
    client.
 1. During the put operation, the client first checks if the connection to the
