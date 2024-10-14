@@ -185,6 +185,20 @@ remaining design decisions.
 
 Q&A on Design Decisions: 
 
+**Q: Why are keys and values strings?** 
+
+> I wanted to support keys and values of arbitrary lengths. I originally looked
+for something equivalent to byte[] in Go within C/C++ and found options like
+char*, char[], or void*. I opted for std::string due to its simplicity and ease
+of use.
+
+**Q: Have you considered fixed-size keys and values?** 
+
+> Yes, I considered using fixed-size keys and values to prevent fragmentation,
+as this could be an issue initially since I was not planning to implement or
+modify the allocator. However, Finch does not need to address such problems at
+this stage, as it has more pressing concerns to focus on.
+
 **Q: Why did you choose blocking I/O?** 
 
 > Blocking I/O with read() and recv() performs well for a manageable number of
