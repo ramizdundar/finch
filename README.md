@@ -47,8 +47,8 @@ Finally, start the client:
 ./client
 ```
 
-At this point, you can explore the main functionality of the client, integrate
-your own code, or check out the tests.
+At this point, you can explore the main function in the client, integrate
+your own code, or check out the [testing](#testing).
 
 ## Testing
 
@@ -233,12 +233,12 @@ availability, and (2) scaling read requests. Since I excluded fault tolerance
 and the system is in-memory, scaling reads doesn’t offer much benefit. If disk
 storage were involved, scaling reads could be more worthwhile.
 
-**Q: Why no disk usage or WAL (Write-Ahead Logging)?**
+**Q: Why no disk usage?**
 
-> While a Redis-like WAL could be feasible, implementing compaction—especially
-concurrent compaction—is complex and not achievable within 2 hours. More
-advanced structures like LSM trees or B+ trees were also out of scope for this
-project.
+> While a Redis-like AOF (Append Only File) could be feasible, implementing
+compaction—especially concurrent compaction—is complex and not achievable within
+2 hours. More advanced structures like LSM trees or B+ trees were also out of
+scope for this project.
 
 **Q: Why partition the data if there’s no replication?** 
 
